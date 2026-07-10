@@ -7,7 +7,11 @@ function Masked({ digits = 6 }: { digits?: number }) {
   return <span className="tracking-[3px]">{'•'.repeat(digits)}</span>
 }
 
-export function AccountCarousel() {
+export function AccountCarousel({
+  onSlideChange,
+}: {
+  onSlideChange?: (index: number) => void
+}) {
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(false)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -16,7 +20,10 @@ export function AccountCarousel() {
     const el = trackRef.current
     if (!el) return
     const i = Math.round(el.scrollLeft / el.clientWidth)
-    if (i !== index) setIndex(i)
+    if (i !== index) {
+      setIndex(i)
+      onSlideChange?.(i)
+    }
   }
 
   return (
@@ -26,7 +33,7 @@ export function AccountCarousel() {
       className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto"
     >
       {carouselSlides.map((slide) => (
-        <div key={slide.id} className="w-full shrink-0 snap-center px-6">
+        <div key={slide.id} className="flex h-[294px] w-full shrink-0 snap-center flex-col px-6">
           <div className="flex items-center gap-2 pt-1">
             <h2 className="font-display text-[21px] font-semibold">{slide.title}</h2>
             {slide.badge && (
@@ -119,16 +126,16 @@ export function AccountCarousel() {
             </div>
           )}
 
-          <div className="mt-6 flex items-center justify-between pb-6">
+          <div className="mt-auto flex items-center justify-between pb-6">
             <button className="rounded-xl border border-white/35 px-4 py-2.5 font-ui text-[13px] font-medium transition active:scale-95 active:bg-white/10">
               {slide.cta}
             </button>
-            <div className="flex gap-1.5">
+            <div className="flex items-center gap-1.5">
               {carouselSlides.map((_, i) => (
                 <span
                   key={i}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === index ? 'w-4 bg-white' : 'w-1.5 bg-white/30'
+                  className={`h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
+                    i === index ? 'bg-white' : 'bg-white/30'
                   }`}
                 />
               ))}

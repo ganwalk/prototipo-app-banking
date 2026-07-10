@@ -83,6 +83,7 @@
      como o próprio AUVP: cabeçalho de marca constante). */
   --color-brand: #023620;
   --color-brand-foreground: #ffffff;
+  --color-brand-secondary: #3e8555;
 
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 0.25rem);
