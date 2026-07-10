@@ -1,3 +1,8 @@
+import auvpBranca from '../assets/brand/auvp-horizontal-branca.svg'
+import auvpPreta from '../assets/brand/auvp-horizontal-preta.svg'
+
+const auvpLogoSrc = { branca: auvpBranca, preta: auvpPreta }
+
 /**
  * Logotipo oficial AUVP Capital, publicado no repositório do design
  * system (armandocustodio-ds/designsystemauvp).
@@ -9,13 +14,7 @@ export function AuvpLogo({
   variant?: 'branca' | 'preta'
   className?: string
 }) {
-  return (
-    <img
-      src={`/brand/auvp-horizontal-${variant}.svg`}
-      alt="AUVP Capital"
-      className={className}
-    />
-  )
+  return <img src={auvpLogoSrc[variant]} alt="AUVP Capital" className={className} />
 }
 
 export function PixGlyph({
