@@ -1,19 +1,18 @@
 /**
- * Lockup oficial de cobrand AUVP + BTG Pactual, publicado no repositório
- * do design system (armandocustodio-ds/designsystemauvp). Usar sempre a
- * peça inteira — não recompor os dois logos separadamente.
+ * Logotipo oficial AUVP Capital, publicado no repositório do design
+ * system (armandocustodio-ds/designsystemauvp).
  */
-export function CobrandLockup({
-  variant = 'branco',
+export function AuvpLogo({
+  variant = 'branca',
   className = '',
 }: {
-  variant?: 'branco' | 'preto'
+  variant?: 'branca' | 'preta'
   className?: string
 }) {
   return (
     <img
-      src={`/brand/auvp-btg-${variant}.svg`}
-      alt="AUVP Capital em parceria com BTG Pactual"
+      src={`/brand/auvp-horizontal-${variant}.svg`}
+      alt="AUVP Capital"
       className={className}
     />
   )

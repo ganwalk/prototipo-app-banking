@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ChevronRight, Lock, CreditCard, CircleHelp } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { StatusBar } from '../components/StatusBar'
-import { CobrandLockup, PixGlyph } from '../components/Brand'
+import { AuvpLogo, PixGlyph } from '../components/Brand'
 import { user } from '../data/mock'
 
 const quickActions = [
@@ -20,7 +20,7 @@ export function Login() {
       <StatusBar tone="brand" />
 
       <div className="px-6 pt-6">
-        <CobrandLockup variant="branco" className="h-7 w-auto" />
+        <AuvpLogo variant="branca" className="h-7 w-auto" />
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-6 -mt-10">
