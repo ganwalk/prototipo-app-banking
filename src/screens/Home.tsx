@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Bell, Search, ChevronDown, ScanLine, Settings, Menu as MenuIcon } from 'lucide-react'
 import { StatusBar } from '../components/StatusBar'
 import { PixGlyph } from '../components/Brand'
+import { ColorTag } from '../components/ColorTag'
 import { AccountCarousel } from '../components/AccountCarousel'
 import { PromoCarousel } from '../components/PromoCarousel'
 import { ActivityList } from '../components/ActivityList'
@@ -14,11 +15,14 @@ export function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [slideIndex, setSlideIndex] = useState(0)
   const heroBg = slideIndex % 2 === 0 ? 'bg-brand' : 'bg-brand-secondary'
+  const heroToken = slideIndex % 2 === 0 ? 'brand' : 'brand-secondary'
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
       <div className="no-scrollbar flex-1 overflow-y-auto bg-background">
-        <div className={`${heroBg} pb-2 text-brand-foreground transition-colors duration-500`}>
+        <div
+          className={`relative ${heroBg} pb-2 text-brand-foreground transition-colors duration-500`}
+        >
           <StatusBar tone="brand" />
 
           <div className="flex items-center justify-between px-6 pt-3">
@@ -64,6 +68,8 @@ export function Home() {
               <Settings size={16} strokeWidth={1.8} /> Configurações
             </button>
           </div>
+
+          <ColorTag token={heroToken} className="absolute bottom-3 right-3" />
         </div>
 
         <PromoCarousel />
@@ -71,12 +77,15 @@ export function Home() {
         <ActivityList />
       </div>
 
-      <button
-        onClick={() => setMenuOpen(true)}
-        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2.5 rounded-full bg-foreground px-6 py-3.5 font-ui text-[14px] font-semibold text-background shadow-float transition active:scale-95"
-      >
-        <MenuIcon size={17} strokeWidth={2} /> Menu
-      </button>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
+        <button
+          onClick={() => setMenuOpen(true)}
+          className="relative flex items-center gap-2.5 rounded-full bg-foreground px-6 py-3.5 font-ui text-[14px] font-semibold text-background shadow-float transition active:scale-95"
+        >
+          <MenuIcon size={17} strokeWidth={2} /> Menu
+          <ColorTag token="foreground" className="absolute -bottom-2 -right-2" />
+        </button>
+      </div>
 
       <AnimatePresence>
         {menuOpen && <MenuOverlay onClose={() => setMenuOpen(false)} />}

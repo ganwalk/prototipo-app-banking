@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Pipette, X } from 'lucide-react'
+import { FIXED_TOKEN_HEX, hslStringToHex } from './colorTokens'
 
 interface TokenEntry {
   name: string
@@ -42,24 +43,6 @@ const HSL_TOKENS = [
   'border',
 ]
 
-const FIXED_TOKENS: TokenEntry[] = [
-  { name: 'brand', hex: '#023620' },
-  { name: 'brand-foreground', hex: '#ffffff' },
-]
-
-function hslStringToHex(hsl: string): string | null {
-  const m = hsl.trim().match(/^(-?[\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/)
-  if (!m) return null
-  const h = parseFloat(m[1])
-  const s = parseFloat(m[2]) / 100
-  const l = parseFloat(m[3]) / 100
-  const k = (n: number) => (n + h / 30) % 12
-  const a = s * Math.min(l, 1 - l)
-  const f = (n: number) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))
-  const toHex = (x: number) => Math.round(x * 255).toString(16).padStart(2, '0')
-  return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`
-}
-
 function rgbStringToHex(rgb: string): { hex: string; alpha: number } | null {
   const m = rgb.match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+))?\s*\)/)
   if (!m) return null
@@ -70,7 +53,10 @@ function rgbStringToHex(rgb: string): { hex: string; alpha: number } | null {
 
 function buildTokenMap(): TokenEntry[] {
   const styles = getComputedStyle(document.documentElement)
-  const entries: TokenEntry[] = [...FIXED_TOKENS]
+  const entries: TokenEntry[] = Object.entries(FIXED_TOKEN_HEX).map(([name, hex]) => ({
+    name,
+    hex,
+  }))
   for (const name of HSL_TOKENS) {
     const hex = hslStringToHex(styles.getPropertyValue(`--${name}`))
     if (hex) entries.push({ name, hex })

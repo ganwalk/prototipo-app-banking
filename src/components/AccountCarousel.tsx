@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
 import { carouselSlides } from '../data/mock'
 import { formatBRL } from '../lib/format'
+import { ColorTag } from './ColorTag'
 
 function Masked({ digits = 6 }: { digits?: number }) {
   return <span className="tracking-[3px]">{'•'.repeat(digits)}</span>
@@ -80,6 +81,7 @@ export function AccountCarousel({
                   }}
                 />
               </div>
+              <ColorTag token="info" className="mt-1.5" />
               <div className="mt-2 flex justify-between font-ui text-[12px] text-white/70">
                 <span>
                   {visible ? (

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { StatusBar } from './StatusBar'
 import { PixGlyph } from './Brand'
+import { ColorTag } from './ColorTag'
 import { ThemeToggle } from '../theme/ThemeToggle'
 import { menuSections } from '../data/mock'
 import { formatBRL } from '../lib/format'
@@ -38,6 +39,9 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
       transition={{ type: 'spring', damping: 32, stiffness: 300 }}
       className="absolute inset-0 z-40 flex flex-col overflow-y-auto bg-background text-foreground"
     >
+      <ColorTag token="background" className="fixed bottom-3 left-3 z-50" />
+      <ColorTag token="card" className="fixed bottom-3 right-3 z-50" />
+
       <div className="bg-card">
         <StatusBar />
         <div className="flex items-center justify-between px-6 pb-4 pt-2">
