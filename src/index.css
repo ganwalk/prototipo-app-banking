@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anek Latin", "Sora", sans-serif;
+  --font-ui: "Sora", sans-serif;
+  --font-body: "Roboto", sans-serif;
+
+  /* AUVP Capital — verde institucional (design system) */
+  --color-brand-950: #011c10;
+  --color-brand-900: #023620;
+  --color-brand-800: #0a4429;
+  --color-brand-700: #0f5727;
+  --color-brand-600: #1c6b3c;
+  --color-brand-500: #3d8459;
+  --color-brand-400: #6ca785;
+  --color-brand-300: #9cc2ac;
+  --color-brand-200: #cfe3d7;
+  --color-brand-100: #e6efe8;
+  --color-brand-50: #f1f4f1;
+
+  --color-ink: #0b2905;
+  --color-ink-soft: #5f705c;
+  --color-hairline: #dde3dd;
+
+  --color-success: #157f3c;
+  --color-warning: #d17c05;
+  --color-error: #c81e1e;
+  --color-info: #0b6bcb;
+  --color-gold: #c79a4b;
+  --color-gold-soft: #eadfc3;
+
+  --color-navy-950: #0a1830;
+  --color-navy-900: #0f2038;
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+
+  --shadow-soft: 0 1px 2px rgba(2, 20, 12, 0.04), 0 8px 24px -12px rgba(2, 20, 12, 0.18);
+  --shadow-card: 0 2px 8px rgba(2, 20, 12, 0.06), 0 16px 40px -20px rgba(2, 20, 12, 0.28);
+  --shadow-float: 0 12px 32px -8px rgba(2, 20, 12, 0.45);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background: var(--color-brand-950);
+    overscroll-behavior: none;
+  }
+
+  ::selection {
+    background: var(--color-brand-300);
+    color: var(--color-brand-950);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
