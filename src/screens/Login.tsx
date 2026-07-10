@@ -3,6 +3,7 @@ import { ChevronRight, Lock, CreditCard, CircleHelp } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { StatusBar } from '../components/StatusBar'
 import { AuvpLogo, PixGlyph } from '../components/Brand'
+import { ColorTag } from '../components/ColorTag'
 import { user } from '../data/mock'
 
 const quickActions = [
@@ -19,8 +20,9 @@ export function Login() {
     <div className="flex h-full flex-col bg-brand text-brand-foreground">
       <StatusBar tone="brand" />
 
-      <div className="px-6 pt-6">
+      <div className="flex items-center justify-between px-6 pt-6">
         <AuvpLogo variant="branca" className="h-16 w-auto" />
+        <ColorTag token="brand" />
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-6 -mt-10">
@@ -41,12 +43,15 @@ export function Login() {
           transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
           className="mt-9"
         >
-          <button
-            onClick={() => navigate('/home')}
-            className="w-full max-w-[180px] rounded-xl bg-white py-3.5 font-ui font-semibold text-brand shadow-soft transition active:scale-[0.97]"
-          >
-            Entrar
-          </button>
+          <div className="relative w-full max-w-[180px]">
+            <button
+              onClick={() => navigate('/home')}
+              className="w-full rounded-xl bg-white py-3.5 font-ui font-semibold text-brand shadow-soft transition active:scale-[0.97]"
+            >
+              Entrar
+            </button>
+            <ColorTag token="brand-foreground" className="absolute -bottom-2 -right-2" />
+          </div>
 
           <div className="mt-7 flex flex-col gap-4 font-ui text-[15px]">
             <button className="flex items-center gap-1 text-left text-white/95 transition active:opacity-70">

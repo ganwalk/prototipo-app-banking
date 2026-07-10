@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Heart, Sparkles, Send } from 'lucide-react'
 import { promoSlides } from '../data/mock'
+import { ColorTag } from './ColorTag'
 
 const icons = { pix: Send, heart: Heart, sparkles: Sparkles }
 
@@ -32,9 +33,12 @@ export function PromoCarousel() {
               <p className="max-w-[75%] font-display text-[19px] font-medium leading-snug">
                 {slide.title}
               </p>
-              <button className="mt-5 rounded-lg bg-secondary-foreground px-4 py-2.5 font-ui text-[13px] font-semibold text-secondary transition active:scale-95">
-                {slide.cta}
-              </button>
+              <div className="relative mt-5 inline-block">
+                <button className="rounded-lg bg-secondary-foreground px-4 py-2.5 font-ui text-[13px] font-semibold text-secondary transition active:scale-95">
+                  {slide.cta}
+                </button>
+                <ColorTag token="secondary-foreground" className="absolute -bottom-2 -right-2" />
+              </div>
               <div className="mt-5 flex gap-1.5">
                 {promoSlides.map((_, i) => (
                   <span
@@ -47,6 +51,7 @@ export function PromoCarousel() {
                   />
                 ))}
               </div>
+              <ColorTag token="secondary" className="absolute bottom-3 right-3" />
             </div>
           </div>
         )
