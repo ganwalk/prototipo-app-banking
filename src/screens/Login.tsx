@@ -20,7 +20,7 @@ export function Login() {
       <StatusBar tone="brand" />
 
       <div className="px-6 pt-6">
-        <AuvpLogo variant="branca" className="h-7 w-auto" />
+        <AuvpLogo variant="branca" className="h-16 w-auto" />
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-6 -mt-10">
