@@ -12,11 +12,13 @@ import { user } from '../data/mock'
 
 export function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [slideIndex, setSlideIndex] = useState(0)
+  const heroBg = slideIndex % 2 === 0 ? 'bg-brand' : 'bg-brand-secondary'
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
       <div className="no-scrollbar flex-1 overflow-y-auto bg-background">
-        <div className="bg-brand pb-2 text-brand-foreground">
+        <div className={`${heroBg} pb-2 text-brand-foreground transition-colors duration-500`}>
           <StatusBar tone="brand" />
 
           <div className="flex items-center justify-between px-6 pt-3">
@@ -47,7 +49,7 @@ export function Home() {
           </div>
 
           <div className="mt-6">
-            <AccountCarousel />
+            <AccountCarousel onSlideChange={setSlideIndex} />
           </div>
 
           <div className="mt-1 flex items-center gap-6 border-t border-white/15 px-6 py-4 font-ui text-[13.5px] font-medium">
