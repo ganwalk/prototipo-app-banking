@@ -33,7 +33,7 @@ export function AccountCarousel({
       className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto"
     >
       {carouselSlides.map((slide) => (
-        <div key={slide.id} className="w-full shrink-0 snap-center px-6">
+        <div key={slide.id} className="flex h-[294px] w-full shrink-0 snap-center flex-col px-6">
           <div className="flex items-center gap-2 pt-1">
             <h2 className="font-display text-[21px] font-semibold">{slide.title}</h2>
             {slide.badge && (
@@ -126,7 +126,7 @@ export function AccountCarousel({
             </div>
           )}
 
-          <div className="mt-6 flex items-center justify-between pb-6">
+          <div className="mt-auto flex items-center justify-between pb-6">
             <button className="rounded-xl border border-white/35 px-4 py-2.5 font-ui text-[13px] font-medium transition active:scale-95 active:bg-white/10">
               {slide.cta}
             </button>
