@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { SignalHigh, Wifi, BatteryFull } from 'lucide-react'
 import { formatTime } from '../lib/format'
 
-export function StatusBar({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
+export function StatusBar({ tone = 'auto' }: { tone?: 'brand' | 'auto' }) {
   const [now, setNow] = useState(new Date())
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export function StatusBar({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
     return () => clearInterval(id)
   }, [])
 
-  const color = tone === 'light' ? 'text-white' : 'text-ink'
+  const color = tone === 'brand' ? 'text-brand-foreground' : 'text-foreground'
 
   return (
     <div

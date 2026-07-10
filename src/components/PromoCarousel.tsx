@@ -25,14 +25,14 @@ export function PromoCarousel() {
         const Icon = icons[slide.icon]
         return (
           <div key={slide.id} className="w-full shrink-0 snap-center px-6 py-6">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 to-navy-950 px-6 py-7 text-white shadow-card">
+            <div className="relative overflow-hidden rounded-2xl bg-secondary px-6 py-7 text-secondary-foreground shadow-card">
               <div className="absolute -right-6 -top-6 flex h-28 w-28 items-center justify-center rounded-full bg-white/5">
-                <Icon size={34} strokeWidth={1.5} className="text-white/70" />
+                <Icon size={34} strokeWidth={1.5} className="text-secondary-foreground/60" />
               </div>
               <p className="max-w-[75%] font-display text-[19px] font-medium leading-snug">
                 {slide.title}
               </p>
-              <button className="mt-5 rounded-lg bg-white px-4 py-2.5 font-ui text-[13px] font-semibold text-navy-950 transition active:scale-95">
+              <button className="mt-5 rounded-lg bg-secondary-foreground px-4 py-2.5 font-ui text-[13px] font-semibold text-secondary transition active:scale-95">
                 {slide.cta}
               </button>
               <div className="mt-5 flex gap-1.5">
@@ -40,7 +40,9 @@ export function PromoCarousel() {
                   <span
                     key={i}
                     className={`h-1.5 rounded-full transition-all ${
-                      i === index ? 'w-4 bg-white' : 'w-1.5 bg-white/30'
+                      i === index
+                        ? 'w-4 bg-secondary-foreground'
+                        : 'w-1.5 bg-secondary-foreground/30'
                     }`}
                   />
                 ))}

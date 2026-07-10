@@ -7,6 +7,7 @@ import { AccountCarousel } from '../components/AccountCarousel'
 import { PromoCarousel } from '../components/PromoCarousel'
 import { ActivityList } from '../components/ActivityList'
 import { MenuOverlay } from '../components/MenuOverlay'
+import { ThemeToggle } from '../theme/ThemeToggle'
 import { user } from '../data/mock'
 
 export function Home() {
@@ -14,9 +15,9 @@ export function Home() {
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
-      <div className="no-scrollbar flex-1 overflow-y-auto bg-brand-50">
-        <div className="bg-gradient-to-b from-brand-400 via-brand-700 to-brand-900 pb-2 text-white">
-          <StatusBar tone="light" />
+      <div className="no-scrollbar flex-1 overflow-y-auto bg-background">
+        <div className="bg-brand pb-2 text-brand-foreground">
+          <StatusBar tone="brand" />
 
           <div className="flex items-center justify-between px-6 pt-3">
             <button className="flex items-center gap-3 text-left transition active:opacity-80">
@@ -32,6 +33,7 @@ export function Home() {
               </span>
             </button>
             <div className="flex items-center gap-4">
+              <ThemeToggle />
               <button aria-label="Notificações" className="relative">
                 <Bell size={21} strokeWidth={1.8} />
                 <span className="absolute -right-1.5 -top-1.5 rounded-full bg-white px-1 text-[9px] font-bold text-error">
@@ -69,7 +71,7 @@ export function Home() {
 
       <button
         onClick={() => setMenuOpen(true)}
-        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2.5 rounded-full bg-neutral-950 px-6 py-3.5 font-ui text-[14px] font-semibold text-white shadow-float transition active:scale-95"
+        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2.5 rounded-full bg-foreground px-6 py-3.5 font-ui text-[14px] font-semibold text-background shadow-float transition active:scale-95"
       >
         <MenuIcon size={17} strokeWidth={2} /> Menu
       </button>

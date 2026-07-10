@@ -4,11 +4,8 @@ export const user = {
   initials: 'AN',
 }
 
-export type CardTone = 'mint' | 'forest' | 'deep' | 'olive' | 'navy'
-
 export interface CarouselSlide {
   id: string
-  tone: CardTone
   eyebrow: string
   title: string
   amountLabel: string
@@ -22,7 +19,6 @@ export interface CarouselSlide {
 export const carouselSlides: CarouselSlide[] = [
   {
     id: 'conta',
-    tone: 'forest',
     eyebrow: 'Conta corrente',
     title: 'Conta corrente',
     amountLabel: 'Saldo atual',
@@ -35,7 +31,6 @@ export const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 'cartao',
-    tone: 'deep',
     eyebrow: 'Cartão de crédito',
     title: 'Cartão de crédito',
     amountLabel: 'Fatura Cartão Black crédito e débito final 3416',
@@ -45,7 +40,6 @@ export const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 'investimentos',
-    tone: 'olive',
     eyebrow: 'Investimentos',
     title: 'Investimentos',
     amountLabel: 'Patrimônio total',
@@ -55,7 +49,6 @@ export const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 'emprestimos',
-    tone: 'mint',
     eyebrow: 'Empréstimos e consórcio',
     title: 'Empréstimos e consórcio',
     amountLabel: 'Próxima parcela',
@@ -64,7 +57,6 @@ export const carouselSlides: CarouselSlide[] = [
   },
   {
     id: 'seguros',
-    tone: 'navy',
     eyebrow: 'Seguros',
     title: 'Seguros',
     amountLabel: 'Proteção contratada',

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ChevronRight, Lock, CreditCard, CircleHelp } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { StatusBar } from '../components/StatusBar'
-import { AuvpLogo, BtgBadge, PixGlyph } from '../components/Brand'
+import { CobrandLockup, PixGlyph } from '../components/Brand'
 import { user } from '../data/mock'
 
 const quickActions = [
@@ -16,12 +16,11 @@ export function Login() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex h-full flex-col bg-gradient-to-b from-brand-400 via-brand-700 to-brand-900 text-white">
-      <StatusBar tone="light" />
+    <div className="flex h-full flex-col bg-brand text-brand-foreground">
+      <StatusBar tone="brand" />
 
-      <div className="flex items-center justify-between px-6 pt-6">
-        <AuvpLogo />
-        <BtgBadge />
+      <div className="px-6 pt-6">
+        <CobrandLockup variant="branco" className="h-7 w-auto" />
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-6 -mt-10">
@@ -44,7 +43,7 @@ export function Login() {
         >
           <button
             onClick={() => navigate('/home')}
-            className="w-full max-w-[180px] rounded-xl bg-white py-3.5 font-ui font-semibold text-brand-900 shadow-soft transition active:scale-[0.97]"
+            className="w-full max-w-[180px] rounded-xl bg-white py-3.5 font-ui font-semibold text-brand shadow-soft transition active:scale-[0.97]"
           >
             Entrar
           </button>

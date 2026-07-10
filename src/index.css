@@ -1,40 +1,92 @@
 @import "tailwindcss";
 
-@theme {
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 110 78% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 110 78% 9%;
+  --primary: 155 93% 11%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 160 55% 18%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 120 10% 95%;
+  --muted-foreground: 110 10% 40%;
+  --accent: 155 93% 11%;
+  --accent-foreground: 0 0% 100%;
+  --success: 142 72% 29%;
+  --success-foreground: 0 0% 100%;
+  --warning: 35 95% 42%;
+  --warning-foreground: 0 0% 100%;
+  --error: 0 84% 48%;
+  --error-foreground: 0 0% 100%;
+  --info: 210 90% 42%;
+  --info-foreground: 0 0% 100%;
+  --border: 120 10% 88%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 6%;
+  --card-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 8%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 145 20% 44%;
+  --accent-foreground: 0 0% 5%;
+  --success: 142 60% 48%;
+  --success-foreground: 0 0% 5%;
+  --warning: 38 95% 60%;
+  --warning-foreground: 0 0% 5%;
+  --error: 0 80% 63%;
+  --error-foreground: 0 0% 5%;
+  --info: 210 90% 65%;
+  --info-foreground: 0 0% 5%;
+  --border: 0 0% 16%;
+}
+
+@theme inline {
   --font-display: "Anek Latin", "Sora", sans-serif;
   --font-ui: "Sora", sans-serif;
   --font-body: "Roboto", sans-serif;
 
-  /* AUVP Capital — verde institucional (design system) */
-  --color-brand-950: #011c10;
-  --color-brand-900: #023620;
-  --color-brand-800: #0a4429;
-  --color-brand-700: #0f5727;
-  --color-brand-600: #1c6b3c;
-  --color-brand-500: #3d8459;
-  --color-brand-400: #6ca785;
-  --color-brand-300: #9cc2ac;
-  --color-brand-200: #cfe3d7;
-  --color-brand-100: #e6efe8;
-  --color-brand-50: #f1f4f1;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-error: hsl(var(--error));
+  --color-error-foreground: hsl(var(--error-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
+  --color-border: hsl(var(--border));
 
-  --color-ink: #0b2905;
-  --color-ink-soft: #5f705c;
-  --color-hairline: #dde3dd;
+  /* Cor de marca fixa — a identidade AUVP não inverte com o tema,
+     apenas o conteúdo abaixo dela (mesmo padrão de apps bancários
+     como o próprio AUVP: cabeçalho de marca constante). */
+  --color-brand: #023620;
+  --color-brand-foreground: #ffffff;
 
-  --color-success: #157f3c;
-  --color-warning: #d17c05;
-  --color-error: #c81e1e;
-  --color-info: #0b6bcb;
-  --color-gold: #c79a4b;
-  --color-gold-soft: #eadfc3;
-
-  --color-navy-950: #0a1830;
-  --color-navy-900: #0f2038;
-
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+  --radius-2xl: calc(var(--radius) + 0.75rem);
 
   --shadow-soft: 0 1px 2px rgba(2, 20, 12, 0.04), 0 8px 24px -12px rgba(2, 20, 12, 0.18);
   --shadow-card: 0 2px 8px rgba(2, 20, 12, 0.06), 0 16px 40px -20px rgba(2, 20, 12, 0.28);
@@ -44,19 +96,20 @@
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
     margin: 0;
     font-family: var(--font-body);
-    color: var(--color-ink);
-    background: var(--color-brand-950);
-    overscroll-behavior: none;
+    background: #01110a;
   }
 
   ::selection {
-    background: var(--color-brand-300);
-    color: var(--color-brand-950);
+    background: hsl(var(--accent) / 0.35);
   }
 }
 
