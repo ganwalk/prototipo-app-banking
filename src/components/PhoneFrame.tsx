@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { ColorInspector } from '../theme/ColorInspector'
 
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (
@@ -9,7 +10,10 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
         sm:shadow-[0_50px_120px_-24px_rgba(0,0,0,0.65)] flex flex-col"
       >
         <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 z-50 h-6 w-28 bg-neutral-950 rounded-b-2xl" />
-        <div className="relative flex-1 min-h-0 flex flex-col">{children}</div>
+        <div className="relative flex-1 min-h-0 flex flex-col">
+          {children}
+          <ColorInspector />
+        </div>
       </div>
     </div>
   )
